@@ -30,7 +30,9 @@
 
 		var amountUnique = uniqueLetters.split("").length;
 
-
+		/* gets users chosen letter and determines if the guess is a correct letter in word;
+		   registers and logs if the chosen letter is a win; tells you how many more unique 
+		   letters are needed */
 		document.onkeyup = function(event){
 			 console.log(wordSplit);
 			var chosenLetter = [event.key];
@@ -46,8 +48,10 @@
 
     				amountUnique = amountUnique - 1;
     				console.log("how many more letters to be determined: " + amountUnique);
+    				break;
     			}
-
+    			/* registers if the chosen letter is incorrect or a loss; logs value into losses
+    			   tells you how many more unique letters are needed*/
     			else if (gotLetter === false) {
     				// add to losses counter +1.
     				losses === losses++;
@@ -57,27 +61,28 @@
     				amountUnique = amountUnique;
     				console.log("how many more letters to be determined: " + amountUnique);
     				
+    				score(gotLetter);
     			}
-    		function score (gotLetter){
+    		/*	passes in the gotLetter boolean and updates the remaining letter count if user selects
+				an existing letter in the word */
+    		function score(boolean){
     			if (gotLetter){
-    				
-    				amountUnique === amountUnique--;
-    		
+    				amountUnique === amountUnique--;{
     					if (amountUnique === 0){
     						console.log("You win! Great job!");
-    					}
+    					}	
     					else {
     						console.log("Keep trying!");
     					}
-    					
-    			}
-    					
+    					console.log("how many more letters to be determined: " + amountUnique);
+    				}	
+  				}
     			else{
     				wins === wins;
     				console.log("wins didn't change = " + wins);
     				}
-    		}		
-    	}
+    			}		
+    		}
     	// storing all key press values into an array
     			var chosenLetters;
 				var all = new Array();
